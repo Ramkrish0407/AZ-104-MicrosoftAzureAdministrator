@@ -147,7 +147,7 @@ In this task, you will create an Azure Active Directory user, assign the RBAC ro
 
     >**Note**: if your custom role is not visible, it can take up to 10 minutes for the custom role to appear after creation.
 
-1. Select the **Role** and click **Next**. On the **Members** tab, click **+ Select members** and **select** your user account az104-***********************.**********.onmicrosoft.com. Click **Next** and then **Review and assign**.
+1. Select the **Role** and click **Next**. On the **Members** tab, click **+ Select members** and **select** user account az104-***********************.**********.onmicrosoft.com. Click **Next** and then **Review and assign**.
 
 1. Open an **InPrivate** browser window and sign in to the [Azure portal](https://portal.azure.com) using the newly created user account. When prompted to update the password, change the password for the user.
 
@@ -159,7 +159,7 @@ In this task, you will create an Azure Active Directory user, assign the RBAC ro
 
 1. In the **InPrivate** browser window, in the Azure portal, search and select **Help + support** and then click **+ Create a support request**. 
 
-1. In the **InPrivate** browser window, on the **Problem Desription/Summary** tab of the **Help + support - New support request** blade, type **Service and subscription limits** in the Summary field and select the **Service and subscription limits (quotas)** issue type. Note that the subscription you are using in this lab is listed in the **Subscription** drop-down list.
+1. In the **InPrivate** browser window, on the **Problem Description/Summary** tab of the **Help + support - New support request** blade, type **Service and subscription limits** in the Summary field and select the **Service and subscription limits (quotas)** issue type. Note that the subscription you are using in this lab is listed in the **Subscription** drop-down list.
 
     >**Note**: The presence of the subscription you are using in this lab in the **Subscription** drop-down list indicates that the account you are using has the permissions required to create the subscription-specific support request.
 
@@ -185,9 +185,9 @@ In this task, you will create an Azure Active Directory user, assign the RBAC ro
 
    ```powershell
    
-   $scope = (Get-AzRoleDefinition -Name 'Support Request Contributor (Custom)').AssignableScopes[0]
-
-   Remove-AzRoleAssignment -ObjectId '[object_ID]' -RoleDefinitionName 'Support Request Contributor (Custom)' -Scope $scope
+    $scope = (Get-AzRoleDefinition -Name 'Support Request Contributor (Custom)').AssignableScopes | Where-Object {$_ -like '*managementgroup*'}
+    
+    Remove-AzRoleAssignment -ObjectId '[object_ID]' -RoleDefinitionName 'Support Request Contributor (Custom)' -Scope $scope
    ```
 
 1. From the Cloud Shell pane, run the following to remove the custom role definition:

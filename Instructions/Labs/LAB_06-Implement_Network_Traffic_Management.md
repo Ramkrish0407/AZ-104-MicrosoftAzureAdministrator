@@ -199,6 +199,8 @@ In this task, you will test transitivity of virtual network peering by using Net
 
 1. On the **Network Watcher - Connection troubleshoot** blade, initiate a check with the following settings (leave others with their default values):
 
+    > **Note**: It may take a few minutes for the resource group to be listed. If you don't want to wait, try this: delete the Network Watcher, create a new Network Watcher, and then retry Connection Troubleshoot. 
+
     | Setting | Value |
     | --- | --- |
     | Subscription | the name of the Azure subscription you are using in this lab |
@@ -328,7 +330,7 @@ In this task, you will configure and test routing between the two spoke virtual 
     | Next hop type | **Virtual appliance** |
     | Next hop address | **10.60.0.4** |
 
-1. Click **OK**
+1. Click **Add**
 
 1. Back on the **az104-06-rt23** route table blade, in the **Settings** section, click **Subnets**, and then click **+ Associate**.
 
@@ -339,7 +341,7 @@ In this task, you will configure and test routing between the two spoke virtual 
     | Virtual network | **az104-06-vnet2** |
     | Subnet | **subnet0** |
 
-1. Click **OK**
+1. Click **Add**
 
 1. Navigate back to **Route tables** blade and click **+ Create**.
 
@@ -416,7 +418,7 @@ In this task, you will implement an Azure Load Balancer in front of the two Azur
     | Setting | Value |
     | --- | --- |
     | Subscription | the name of the Azure subscription you are using in this lab |
-    | Resource group | **az104-06-rg1** |
+    | Resource group | **az104-06-rg4** |
     | Name | **az104-06-lb4** |
     | Region | name of the Azure region into which you deployed all other resources in this lab |
     | SKU  | **Standard** |
@@ -427,11 +429,10 @@ In this task, you will implement an Azure Load Balancer in front of the two Azur
      
     | Setting | Value |
     | --- | --- |
-    | Name | any unique name |
+    | Name | **az104-06-pip4** |
 	| IP version | IPv4 |
 	| IP type | IP address |
     | Public IP address | **Create new** |
-    | Name | **az104-06-pip4** |
 	| Availability zone | **No Zone** | 
 
 1. On the **Backend pools** tab, click **Add a backend pool** with the following settings (leave others with their default values). Click **+ Add** (twice) and then click  **Next:Inbound rules**. 
@@ -511,7 +512,7 @@ In this task, you will implement an Azure Application Gateway in front of the tw
     | Setting | Value |
     | --- | --- |
     | Subscription | the name of the Azure subscription you are using in this lab |
-    | Resource group | **az104-06-rg1** |
+    | Resource group | **az104-06-rg5** (create new) |
     | Application gateway name | **az104-06-appgw5** |
     | Region | name of the Azure region into which you deployed all other resources in this lab |
     | Tier | **Standard V2** |
